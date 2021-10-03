@@ -1,36 +1,31 @@
 import React  from 'react'
-import logo from './assets/images/logo.svg';
-import HelloReact from './components/hello-react';
-import Wrapper from './components/wrapper';
+import Counter from './components/counter'
+import {
+  TestAbstract,
+  TestClass,
+} from './components/test-class'
+import TestFuncComponent from './components/test-func-component'
+import UserList from './components/user-list'
 import styles from './styles.module.scss';
 
-const data = [{ id: 1, text: 'text 1' }, { id: 2, text: 'text 2' }];
-
-function App() {
+const App = () => {
   return (
     <div className={styles.app}>
-      <header className={styles.header}>
-        <img src={logo} className={styles.logo} alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className={styles.link}
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <UserList />
+      <br/>
 
-        {data.map(({ id, text}) => {
-          return (
-            <Wrapper key={id}>
-              <HelloReact text={text} id={id} />
-            </Wrapper>
-          )
-        })}
-      </header>
+      Classes
+      <TestAbstract />
+      <TestClass />
+
+      <br/>
+      Functional
+      <TestFuncComponent a={1} b={2} />
+      <TestFuncComponent a={1} b={2} additional={5} />
+
+      <br/>
+      Counter
+      <Counter />
     </div>
   );
 }
