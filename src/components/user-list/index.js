@@ -1,4 +1,5 @@
 import React from 'react'
+import * as PropTypes from 'prop-types'
 import User from '../user'
 import styles from './styles.module.scss';
 
@@ -12,12 +13,17 @@ const data = [
   {id: "uniq7", name:"Anna"}
 ]
 
-const UserList = () => {
+const UserList = ({ id }) => {
   return (
     <div className={styles.list}>
+      <p>ID: {id}</p>
       {data.map(({ id, name }) => <User key={id} name={name} />)}
     </div>
   )
+}
+
+UserList.propTypes = {
+  id: PropTypes.string.isRequired,
 }
 
 export default UserList
