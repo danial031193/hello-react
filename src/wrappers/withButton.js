@@ -1,3 +1,5 @@
+import React from 'react';
+
 const withButton = (Component) => {
   return ({ id }) => {
     // const onScroll = (e) => console.log(e);
@@ -13,8 +15,8 @@ const withButton = (Component) => {
         <Component id={id} />
         <button>Кнопка</button>
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
-export default withButton
+export default withButton;

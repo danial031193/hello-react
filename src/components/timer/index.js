@@ -1,27 +1,19 @@
-import React, {
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { useEffect, useRef, useState } from 'react';
 
 const Timer = () => {
   const [state, setState] = useState(0);
 
-  const timer = useRef(null)
+  const timer = useRef(null);
 
   useEffect(() => {
     timer.current = setInterval(() => {
-      setState(prevState => prevState + 1)
-    }, 1000)
+      setState((prevState) => prevState + 1);
+    }, 1000);
 
-    return () => clearTimeout(timer.current)
-  }, [])
+    return () => clearTimeout(timer.current);
+  }, []);
 
-  return (
-    <div>
-      Timer: {state}
-    </div>
-  )
-}
+  return <div>Timer: {state}</div>;
+};
 
-export default Timer
+export default Timer;

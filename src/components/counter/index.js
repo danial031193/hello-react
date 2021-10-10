@@ -1,43 +1,49 @@
 import React, {
+  forwardRef,
   useCallback,
   useEffect,
+  useImperativeHandle,
   useMemo,
-  useRef,
   useState,
-} from 'react'
+} from 'react';
 
-const Counter = () => {
-  const [count, setCount] = useState(0)
+const Counter = forwardRef(({}, ref) => {
+  const [count, setCount] = useState(0);
 
-  const inputRef = useRef()
+  const incrementCount = useCallback(() => setCount(count + 1), [count]);
+  const decrementCount = useCallback(() => setCount(count - 1), [count]);
+  const reset = useCallback(() => setCount(0), []);
 
-  const updateCount = useCallback(() => {
-    setCount(count + 1)
-  }, [count])
+  const obj = useMemo(() => ({ a: 1, b: 2, count }), [count]);
 
-  const focusInput = () => inputRef.current?.focus()
-
-  const obj = useMemo(() => ({ a: 1, b: 2, count }), [count])
+  useImperativeHandle(ref, () => ({ incrementCount, decrementCount, reset }), [
+    decrementCount,
+    incrementCount,
+    reset,
+  ]);
 
   useEffect(() => {
     if (count > 3) {
-      return
+      return;
     }
 
-    document.title = `Вы нажали ${count} раз`
-  }, [count])
+    document.title = `Вы нажали ${count} раз`;
+  }, [count]);
 
   return (
-    <div onClick={updateCount}>
+    <div>
+      <button onClick={incrementCount}>+</button>
+      <button onClick={decrementCount}>-</button>
       count: {count}
-
-      <input ref={inputRef} type="text" />
-      <button onClick={focusInput}>Focus input</button>
       <ul>
-        {Object.entries(obj).map(([key,value]) => <li key={key}>{key}: {value}</li>)}
+        {Object.entries(obj).map(([key, value]) => (
+          <li key={key}>
+            {key}: {value}
+          </li>
+        ))}
       </ul>
     </div>
-  )
-}
+  );
+});
 
-export default Counter
+export default Counter;

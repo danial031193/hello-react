@@ -1,30 +1,30 @@
-import React, { useRef } from 'react'
+import React, { useRef } from 'react';
 
 const UncontrolledForm = () => {
-  const inputs = useRef({})
+  const inputs = useRef({});
 
   const getRefs = (element, id) => {
-    inputs.current[id] = element
-  }
+    inputs.current[id] = element;
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     const resultRefs = Object.values(inputs.current).reduce((data, element) => {
-      data[element.name] = element.value
-      return data
-    }, {})
+      data[element.name] = element.value;
+      return data;
+    }, {});
 
     const resultForm = [...e.target.elements].reduce((data, element) => {
       if (element.type === 'text') {
-        data[element.name] = element.value
+        data[element.name] = element.value;
       }
 
-      return data
-    }, {})
+      return data;
+    }, {});
 
-    console.log({ resultRefs, resultForm })
-  }
+    console.log({ resultRefs, resultForm });
+  };
 
   return (
     <form onSubmit={onSubmit}>
@@ -40,7 +40,7 @@ const UncontrolledForm = () => {
 
       <button type="submit">Submit form</button>
     </form>
-  )
-}
+  );
+};
 
-export default UncontrolledForm
+export default UncontrolledForm;

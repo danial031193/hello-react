@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
 const initState = {
   theme: 'light',
-  toggleTheme: () => null
-}
+  toggleTheme: () => null,
+};
 
 const ThemeContext = React.createContext(initState);
 
-export default ThemeContext
+export default ThemeContext;
