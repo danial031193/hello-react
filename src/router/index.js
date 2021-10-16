@@ -1,8 +1,10 @@
 import ErrorPage from '../pages/error';
 import Forms from '../pages/forms';
 import Home from '../pages/home';
-import Login from '../pages/login';
+import Login from '../pages/login/index.store';
+import Register from '../pages/register/index.store';
 import User from '../pages/user';
+import Users from '../pages/users/index.store';
 import withAuth from '../wrappers/withAuth';
 
 /**
@@ -22,16 +24,20 @@ export default class SiteRoutes {
       component: withAuth(Forms),
     },
     {
-      path: '/user/:name/',
-      component: withAuth(User),
+      path: '/users',
+      component: withAuth(Users),
     },
     {
-      path: '/user/:name/:id',
+      path: '/user/:id',
       component: withAuth(User),
     },
     {
       path: '/login',
       component: Login,
+    },
+    {
+      path: '/register',
+      component: Register,
     },
     {
       path: '*',

@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import Navbar from './components/navbar';
 import ThemeContext from './context/ThemeContext';
@@ -12,10 +13,12 @@ const App = () => {
 
   const themeContextValue = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme]);
 
+  const accountId = useSelector((state) => state.account.id);
+
   return (
     <ThemeContext.Provider value={themeContextValue}>
       <div className={styles.app}>
-        <Navbar />
+        {accountId && <Navbar />}
 
         <div className={styles.body}>
           <Switch>

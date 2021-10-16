@@ -1,9 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { logout as logoutAction } from '../../store/account/action-creators';
 import { links } from './data';
 import styles from './styles.module.scss';
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+
+  const logout = () => dispatch(logoutAction());
+
   return (
     <div className={styles.navbar}>
       {links.map(({ to, title, exact }) => (
@@ -17,6 +23,9 @@ const Navbar = () => {
           {title}
         </NavLink>
       ))}
+      <div className={styles.link} onClick={logout}>
+        Logout
+      </div>
     </div>
   );
 };

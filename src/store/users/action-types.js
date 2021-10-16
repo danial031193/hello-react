@@ -1,0 +1,6 @@
+const USERS_ACTION_TYPES = {
+  ADD_USER: 'ADD_USER',
+  REMOVE_USER: 'REMOVE_USER',
+};
+
+export default USERS_ACTION_TYPES;

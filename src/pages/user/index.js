@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
+import UserItem from './item/index.store';
 
 const User = () => {
-  const { id, name } = useParams();
+  const { id } = useParams();
 
   return (
     <div>
@@ -17,9 +18,8 @@ const User = () => {
         Link with object prop
       </Link>
       <br />
-      User ID: {id ?? 'none'}
-      <br />
-      User Name: {name ?? 'none'}
+
+      <UserItem id={Number(id)} />
     </div>
   );
 };

@@ -13,4 +13,9 @@ export const links = [
     to: '/user',
     exact: false,
   },
+  {
+    title: 'Users',
+    to: '/users',
+    exact: true,
+  },
 ];

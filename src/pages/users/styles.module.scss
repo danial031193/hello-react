@@ -1,0 +1,16 @@
+.row {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-left: 10px;
+  }
+
+  + .row {
+    margin-top: 10px;
+  }
+}
+
+.link {
+  color: #ffffff;
+}

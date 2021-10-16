@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
-import { getIsAuth } from '../../helpers/auth';
+import * as PropTypes from 'prop-types';
 
 /**
  * Component for implementation secure feature.
@@ -8,9 +8,9 @@ import { getIsAuth } from '../../helpers/auth';
  */
 class AuthGateway extends PureComponent {
   render() {
-    const { location } = this.props;
+    const { location, accountId } = this.props;
 
-    const isAuth = getIsAuth();
+    const isAuth = accountId;
     const prevUrl = `${location.pathname}${location.search}`;
 
     return (
@@ -22,5 +22,9 @@ class AuthGateway extends PureComponent {
     );
   }
 }
+
+AuthGateway.propTypes = {
+  accountId: PropTypes.number,
+};
 
 export default withRouter(AuthGateway);
