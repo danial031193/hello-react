@@ -1,6 +1,7 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
 import User from '../user';
+import ComposableUser from '../composable-user';
 import styles from './styles.module.scss';
 
 const data = [
@@ -17,8 +18,15 @@ const UserList = ({ id: userId }) => {
   return (
     <div className={styles.list}>
       <p>ID: {userId}</p>
+      <br />
+      <p>With props</p>
       {data.map(({ id, name }) => (
         <User key={id} name={name} />
+      ))}
+      <br />
+      <p>With children</p>
+      {data.map(({ id, name }) => (
+        <ComposableUser key={id}>{name}</ComposableUser>
       ))}
     </div>
   );

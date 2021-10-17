@@ -1,22 +1,23 @@
 import React from 'react';
 import styles from './styles.module.scss';
 
-const User = ({ name }) => {
+const ComposableUser = ({ children }) => {
   const getName = () => {
-    return name.length > 5 ? `${name.slice(0, 5)}...` : name;
+    return children.length > 5 ? `${children.slice(0, 5)}...` : children;
   };
 
   const getText = () => {
-    if (name.indexOf('e') >= 1) {
+    if (children.indexOf('e') >= 1) {
       return `It’s Premium User! Welcome, ${getName()}!`;
     }
 
     return `It’s user ${getName()}`;
   };
 
-  const isPalindrome = name.split('').reverse().join('').toLowerCase() === name.toLowerCase();
+  const isPalindrome =
+    children.split('').reverse().join('').toLowerCase() === children.toLowerCase();
 
   return <span className={isPalindrome ? styles.highlighted : ''}>{getText()}</span>;
 };
 
-export default React.memo(User);
+export default React.memo(ComposableUser);
