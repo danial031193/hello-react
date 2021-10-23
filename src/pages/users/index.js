@@ -1,21 +1,11 @@
 import React, { useCallback } from 'react';
 import * as PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import CreateUserForm from '../../components/create-user-form/index.store';
+import { CreateUserForm } from '@components/index';
 import styles from './styles.module.scss';
 
 const Users = ({ users, removeUser, accountId }) => {
-  const deleteUser = useCallback(
-    (id) => {
-      if (id === accountId) {
-        alert("You can't delete yourself");
-        return;
-      }
-
-      removeUser(id);
-    },
-    [accountId, removeUser],
-  );
+  const deleteUser = useCallback((id) => removeUser(id), [removeUser]);
 
   return (
     <div>
@@ -28,7 +18,10 @@ const Users = ({ users, removeUser, accountId }) => {
       {users.map((user) => {
         return (
           <div key={user.id} className={styles.row}>
-            <Link to={`/user/${user.id}`} className={styles.link}>
+            <Link
+              to={`/user/${user.id}`}
+              className={[styles.link, user.id === accountId ? styles.red : ''].join(' ')}
+            >
               {user.username}
             </Link>
             <button onClick={() => deleteUser(user.id)}>Delete user</button>
@@ -41,7 +34,6 @@ const Users = ({ users, removeUser, accountId }) => {
 
 Users.propTypes = {
   users: PropTypes.array,
-  accountId: PropTypes.number,
   removeUser: PropTypes.func,
 };
 

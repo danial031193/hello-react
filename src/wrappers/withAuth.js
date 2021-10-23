@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthGateway from '../components/auth-gateway/index.store';
+import { AuthGateway } from '@components/index';
 
 const withAuth = (WrappedComponent) => {
   return () => (

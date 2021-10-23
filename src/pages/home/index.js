@@ -1,14 +1,17 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Counter from '../../components/counter';
-import MouseListener from '../../components/mouse-listener';
-import { TestAbstract, TestClass } from '../../components/test-class';
-import TestFuncComponent from '../../components/test-func-component';
-import ThemeSwitcher from '../../components/theme-switcher';
-import Timer from '../../components/timer';
-import UserList from '../../components/user-list';
-import ThemeContext from '../../context/ThemeContext';
-import withButton from '../../wrappers/withButton';
+import {
+  TestAbstract,
+  TestClass,
+  TestFuncComponent,
+  ThemeSwitcher,
+  Timer,
+  MouseListener,
+  Counter,
+  UserList,
+} from '@components/index';
+import ThemeContext from '@context/ThemeContext';
+import withButton from '@wrappers/withButton';
 
 const UserListWithButton = withButton(UserList);
 

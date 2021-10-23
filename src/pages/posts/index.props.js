@@ -1,4 +1,4 @@
-import { getPosts } from '../../store/posts/action-creators';
+import { getPosts } from '@store/posts/action-creators';
 
 const mapStateToProps = (state) => ({
   posts: state.posts.list,

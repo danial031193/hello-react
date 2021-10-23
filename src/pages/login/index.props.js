@@ -1,4 +1,4 @@
-import { login } from '../../store/account/action-creators';
+import { login } from '@store/account/action-creators';
 
 const mapStateToProps = (state) => ({
   accountId: state.account.id,

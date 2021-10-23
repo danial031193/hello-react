@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
 import CreateUserForm from './index';
-import { mapDispatchToProps } from './index.props';
+import { mapStateToProps, mapDispatchToProps } from './index.props';
 
-export default connect(null, mapDispatchToProps)(CreateUserForm);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateUserForm);

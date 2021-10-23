@@ -1,7 +1,7 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
-import CreateUserForm from '../../components/create-user-form/index.store';
+import { CreateUserForm } from '@components/index';
 import styles from './styles.module.scss';
 
 const Register = ({ accountId }) => {

@@ -13,16 +13,16 @@ const initialState = {
     { id: 9, username: 'user-9', password: '123' },
     { id: 10, username: 'user-10', password: '123' },
   ],
+  newUser: {},
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case TYPES.ADD_USER:
-      const user = { ...payload, id: state.list[state.list.length - 1].id + 1 };
-      return { ...state, list: [...state.list, user] };
+    case TYPES.UPDATE_USERS_LIST:
+      return { ...state, list: payload.list };
 
-    case TYPES.REMOVE_USER:
-      return { ...state, list: state.list.filter((u) => u.id !== payload.id) };
+    case TYPES.UPDATE_NEW_USER:
+      return { ...state, newUser: { ...state.newUser, [payload.key]: payload.value } };
 
     default:
       return { ...state };

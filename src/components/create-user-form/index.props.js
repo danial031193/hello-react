@@ -1,7 +1,12 @@
-import { addUser } from '../../store/users/action-creators';
+import { addUser, updateNewUser } from '@store/users/action-creators';
+
+const mapStateToProps = (state) => ({
+  values: state.users.newUser,
+});
 
 const mapDispatchToProps = {
   addUser,
+  setValue: updateNewUser,
 };
 
-export { mapDispatchToProps };
+export { mapStateToProps, mapDispatchToProps };

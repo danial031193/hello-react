@@ -1,4 +1,4 @@
-import { removeUser } from '../../store/users/action-creators';
+import { removeUser } from '@store/users/action-creators';
 
 const mapStateToProps = (state) => ({
   accountId: state.account.id,

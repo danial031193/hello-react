@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import Navbar from './components/navbar';
-import { ThemeProvider } from './context/ThemeContext';
+import { Navbar } from '@components/index';
+import { ThemeProvider } from '@context/ThemeContext';
 import SiteRoutes from './router';
 import styles from './styles.module.scss';
 

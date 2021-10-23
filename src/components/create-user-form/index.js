@@ -1,19 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as PropTypes from 'prop-types';
 
-const CreateUserForm = ({ addUser }) => {
-  const [values, setValues] = useState({});
-
-  const onChangeInput = (e) => {
-    const newValues = { [e.target.name]: e.target.value };
-    setValues({ ...values, ...newValues });
-  };
+const CreateUserForm = ({ addUser, values, setValue }) => {
+  const onChangeInput = (e) => setValue(e.target.name, e.target.value);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const { username, password } = values;
-    addUser(username, password);
-    alert(`user ${username} added!`);
+    addUser();
   };
 
   return (
@@ -25,7 +18,7 @@ const CreateUserForm = ({ addUser }) => {
 
       <label>
         <p>Password</p>
-        <input type="password" name="password" onChange={onChangeInput} value={values.phone} />
+        <input type="password" name="password" onChange={onChangeInput} value={values.password} />
       </label>
 
       <button type="submit">Submit form</button>
@@ -35,6 +28,8 @@ const CreateUserForm = ({ addUser }) => {
 
 CreateUserForm.propTypes = {
   addUser: PropTypes.func,
+  setValue: PropTypes.func,
+  values: PropTypes.object,
 };
 
 export default CreateUserForm;

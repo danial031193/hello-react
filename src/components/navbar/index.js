@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { logout as logoutAction } from '../../store/account/action-creators';
+import { logout as logoutAction } from '@store/account/action-creators';
 import { links } from './data';
 import styles from './styles.module.scss';
 
