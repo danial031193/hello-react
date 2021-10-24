@@ -4,7 +4,7 @@ import Home from '../pages/home';
 import Login from '../pages/login/index.store';
 import Posts from '../pages/posts/index.store';
 import Register from '../pages/register/index.store';
-import User from '../pages/user';
+import User from '../pages/user/index.store';
 import Users from '../pages/users/index.store';
 import withAuth from '../wrappers/withAuth';
 

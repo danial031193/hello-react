@@ -1,8 +1,9 @@
+import Post from '@components/post';
 import React, { useEffect } from 'react';
 import * as PropTypes from 'prop-types';
 
 const Posts = ({ posts, error, loading, getPosts }) => {
-  useEffect(() => getPosts('test-123'), [getPosts]);
+  useEffect(() => getPosts(), [getPosts]);
 
   return (
     <div>
@@ -14,11 +15,7 @@ const Posts = ({ posts, error, loading, getPosts }) => {
         <p>{error}</p>
       ) : (
         posts.map(({ userId, id, title, body }) => (
-          <ul key={id}>
-            <li>User ID: {userId}</li>
-            <li>Title: {title}</li>
-            <li>Description: {body}</li>
-          </ul>
+          <Post key={id} body={body} title={title} userId={userId} />
         ))
       )}
     </div>

@@ -9,3 +9,4 @@ export { default as ThemeSwitcher } from './theme-switcher';
 export { default as Timer } from './timer';
 export { default as User } from './user';
 export { default as UserList } from './user-list';
+export { default as Modal } from './modal';

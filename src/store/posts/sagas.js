@@ -1,22 +1,34 @@
 import { call, fork, delay, put, select, take, race, takeLatest } from 'redux-saga/effects';
-import { getPostsError, getPostsSuccess } from './action-creators';
+import {
+  getPostsError,
+  getPostsSuccess,
+  getUserPostsError,
+  getUserPostsSuccess,
+} from './action-creators';
 import TYPES from './action-types';
 import { fetchPosts } from './api';
 
-function* getPosts({ payload: { test } }) {
-  console.log({ test });
-
-  const currentPosts = yield select((state) => state.posts.list);
+function* getPosts() {
+  const currentPosts = yield select((state) => state.posts.list.result);
   console.log({ currentPosts });
 
   try {
-    const posts = yield call(fetchPosts, test);
+    const posts = yield call(fetchPosts);
 
     yield delay(500);
 
     yield put(getPostsSuccess(posts));
   } catch (e) {
     yield put(getPostsError(e.message));
+  }
+}
+
+function* getUserPosts({ payload: { id } }) {
+  try {
+    const posts = yield call(fetchPosts, id);
+    yield put(getUserPostsSuccess(posts));
+  } catch (e) {
+    yield put(getUserPostsError(e.message));
   }
 }
 
@@ -53,6 +65,7 @@ function* raceWatcher() {
 
 export default [
   takeLatest(TYPES.GET_POSTS, getPosts),
+  takeLatest(TYPES.GET_USER_POSTS, getUserPosts),
   fork(postsSuccessWatcher),
   fork(raceWatcher),
 ];
