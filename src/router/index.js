@@ -1,3 +1,4 @@
+import Repo from '../pages/repo';
 import ErrorPage from '../pages/error';
 import Forms from '../pages/forms';
 import Home from '../pages/home';
@@ -18,7 +19,11 @@ export default class SiteRoutes {
   static routes = [
     {
       path: '/',
-      component: withAuth(Home),
+      component: Home,
+    },
+    {
+      path: '/repo/:owner/:repo',
+      component: Repo,
     },
     {
       path: '/forms',

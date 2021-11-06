@@ -1,0 +1,15 @@
+.table {
+  position: relative;
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(#000000, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
